@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="aoiBlue">#5bbcf0</color>
+    <color name="aoiBlueDark">#005887</color>
+    <color name="tosca">#05e7eb</color>
+    <color name="toscaDark">#09a8ab</color>
+    <color name="whiteColor">#ffff</color>
+
+</resources>
