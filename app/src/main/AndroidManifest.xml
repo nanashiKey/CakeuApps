@@ -10,7 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-                android:name=".LoginAct"
+                android:name=".allAct.LoginAct"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name=".allAct.MainActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".RegisterAct"
+        <activity android:name=".allAct.RegisterAct"
                   android:screenOrientation="portrait"/>
     </application>
 

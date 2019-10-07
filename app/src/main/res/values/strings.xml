@@ -6,4 +6,6 @@
     <string name="login">LOGIN</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="register_here">Register Here!!</string>
+    <string name="or_login_with">or login with :</string>
+    <string name="powered_by">Powered by: [NGOPI] Software Development</string>
 </resources>
