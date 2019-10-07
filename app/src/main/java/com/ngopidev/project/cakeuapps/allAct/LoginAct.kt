@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.util.Log.*
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -17,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.ngopidev.project.cakeuapps.R
+import com.ngopidev.project.cakeuapps.appsHelper.AllHelperMethod
 import com.ngopidev.project.cakeuapps.appsHelper.Const.Companion.RC_SIGN_IN
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -24,10 +27,23 @@ class LoginAct : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    lateinit var allHelperMethod: AllHelperMethod
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        allHelperMethod = AllHelperMethod(this@LoginAct)
+
+        val windows = window
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        windows.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        windows.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+
+        // finally change the color
+        windows.setStatusBarColor(ContextCompat.getColor(this@LoginAct,  R.color.aoiBlue))
 
         auth = FirebaseAuth.getInstance()
 
@@ -40,8 +56,21 @@ class LoginAct : AppCompatActivity() {
 
 
         btnLogin.setOnClickListener {
-            startActivity(Intent(this@LoginAct, MainActivity::class.java))
-            finish()
+            val email = etEmail.text.toString()
+            val pass = etPass.text.toString()
+
+            if(email.isEmpty() && pass.isEmpty()){
+                allHelperMethod.showShortToast("please fill all empty coloumn")
+            }else{
+                auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+                    startActivity(Intent(this@LoginAct, MainActivity::class.java))
+                    finish()
+                }.addOnFailureListener {
+                    allHelperMethod.showShortToast("email or password not match")
+                    e("CHECKERRORS", it.message!!)
+                }
+            }
+
         }
 
         tvRegis.setOnClickListener {

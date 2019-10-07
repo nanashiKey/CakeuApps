@@ -8,4 +8,8 @@
     <string name="register_here">Register Here!!</string>
     <string name="or_login_with">or login with :</string>
     <string name="powered_by">Powered by: [NGOPI] Software Development</string>
+    <string name="username">username</string>
+    <string name="register">REGISTER</string>
+    <string name="password_again">input your password again</string>
+    <string name="email">email</string>
 </resources>
