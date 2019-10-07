@@ -21,6 +21,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.ngopidev.project.cakeuapps.R
 import com.ngopidev.project.cakeuapps.appsHelper.AllHelperMethod
 import com.ngopidev.project.cakeuapps.appsHelper.Const.Companion.RC_SIGN_IN
+import com.ngopidev.project.cakeuapps.appsHelper.PrefsHelper
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginAct : AppCompatActivity() {
@@ -28,12 +29,14 @@ class LoginAct : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     lateinit var allHelperMethod: AllHelperMethod
+    lateinit var prefsHelper: PrefsHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         allHelperMethod = AllHelperMethod(this@LoginAct)
+        prefsHelper = PrefsHelper(this@LoginAct)
 
         val windows = window
         // clear FLAG_TRANSLUCENT_STATUS flag:
@@ -108,8 +111,14 @@ class LoginAct : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            startActivity(Intent(this@LoginAct, MainActivity::class.java))
-            finish()
+            val isMoneyInputed = prefsHelper.getHasInput()
+            if(isMoneyInputed){
+                startActivity(Intent(this@LoginAct, MainActivity::class.java))
+                finish()
+            }else{
+                allHelperMethod.goTo(FirstMoney::class.java)
+                finish()
+            }
         } else {
             Toast.makeText(this@LoginAct, "user unavailable", Toast.LENGTH_SHORT).show()
         }

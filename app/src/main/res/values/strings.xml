@@ -12,4 +12,6 @@
     <string name="register">REGISTER</string>
     <string name="password_again">input your password again</string>
     <string name="email">email</string>
+    <string name="nominal">nominal</string>
+    <string name="input_your_first_money">input your first money</string>
 </resources>

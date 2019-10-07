@@ -12,6 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.ngopidev.project.cakeuapps.R
 import com.ngopidev.project.cakeuapps.appsHelper.AllHelperMethod
+import com.ngopidev.project.cakeuapps.appsHelper.PrefsHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var auth : FirebaseAuth
     lateinit var googleSignInAccount: GoogleSignInClient
     lateinit var allHelperMethod: AllHelperMethod
+    lateinit var prefsHelper: PrefsHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +42,13 @@ class MainActivity : AppCompatActivity() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
         googleSignInAccount = GoogleSignIn.getClient(this@MainActivity,gso)
         allHelperMethod = AllHelperMethod(this@MainActivity)
+        prefsHelper = PrefsHelper(this@MainActivity)
+        val getMoney = prefsHelper.getFirstInput()
+        tv_nominal.text = "your saving is :\n${getMoney}"
+
+
 
         //cash flow function
         fr_cashFlow.setOnClickListener {
