@@ -36,10 +36,22 @@
                 android:layout_gravity="center"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@drawable/ic_wallet"/>
+                android:src="@drawable/ic_money_flow"/>
         </FrameLayout>
         <FrameLayout
-                android:id="@+id/fr_dataCash"
+                android:id="@+id/fr_seeAlldata"
+                android:layout_margin="10dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/gradiens">
+            <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_accounting"/>
+        </FrameLayout>
+        <FrameLayout
+                android:id="@+id/fr_cashHistory"
                 android:layout_margin="10dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -50,6 +62,14 @@
                     android:layout_height="70dp"
                     android:src="@drawable/ic_cash"/>
         </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:gravity="center"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         <FrameLayout
                 android:id="@+id/fr_inviteQR"
                 android:layout_margin="10dp"
@@ -61,26 +81,6 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:src="@drawable/ic_qrcodescan"/>
-        </FrameLayout>
-    </LinearLayout>
-
-    <LinearLayout
-            android:gravity="center"
-            android:layout_margin="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <FrameLayout
-                android:id="@+id/fr_edit"
-                android:layout_margin="10dp"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/gradiens">
-            <ImageView
-                    android:layout_gravity="center"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/ic_edit"/>
         </FrameLayout>
         <FrameLayout
                 android:id="@+id/fr_add"
