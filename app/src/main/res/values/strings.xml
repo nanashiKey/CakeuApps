@@ -14,4 +14,20 @@
     <string name="email">email</string>
     <string name="nominal">nominal</string>
     <string name="input_your_first_money">input your first money</string>
+    <string name="add_friends">Add Friends</string>
+    <string name="scan_qr">Scan QR</string>
+    <string name="flow_history">Cash History</string>
+    <string name="cash_flow">Cash Flow</string>
+    <string name="cash_control">Cash Control</string>
+
+    <string-array name="selectType">
+        <item>spend money</item>
+        <item>save money</item>
+    </string-array>
+
+    <!--  for ads  -->
+    <string name="adsId" translatable="false">ca-app-pub-5695049111307874~5803816241</string>
+    <string name="adsUnit" translatable="false">ca-app-pub-5695049111307874/6568789924</string>
+    <string name="add_money">add money</string>
+    <string name="report">REPORT</string>
 </resources>

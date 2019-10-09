@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.ngopidev.project.cakeuapps.R
+import com.ngopidev.project.cakeuapps.allAct.CashFlowAct.CashFlowMain
 import com.ngopidev.project.cakeuapps.appsHelper.AllHelperMethod
 import com.ngopidev.project.cakeuapps.appsHelper.PrefsHelper
 import kotlinx.android.synthetic.main.activity_main.*
@@ -52,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         //cash flow function
         fr_cashFlow.setOnClickListener {
-            allHelperMethod.underConstructionToast()
+            allHelperMethod.goTo(CashFlowMain::class.java)
         }
 
         //cash all data function
@@ -79,6 +83,42 @@ class MainActivity : AppCompatActivity() {
         logout.setOnClickListener {
             signOut()
             allHelperMethod.goTo(LoginAct::class.java)
+        }
+
+        MobileAds.initialize(this)
+        val adReq = AdRequest.Builder().build()
+        adView.loadAd(adReq)
+
+        adView.adListener = object : AdListener(){
+            override fun onAdImpression() {
+                super.onAdImpression()
+            }
+
+            override fun onAdLeftApplication() {
+                super.onAdLeftApplication()
+            }
+
+            override fun onAdClicked() {
+                super.onAdClicked()
+            }
+
+            override fun onAdFailedToLoad(p0: Int) {
+                super.onAdFailedToLoad(p0)
+                allHelperMethod.showShortToast("Ads Failed to Load")
+            }
+
+            override fun onAdClosed() {
+                super.onAdClosed()
+            }
+
+            override fun onAdOpened() {
+                super.onAdOpened()
+            }
+
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+            }
+
         }
     }
 

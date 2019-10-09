@@ -24,6 +24,14 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".allAct.FirstMoney"
                 android:screenOrientation="portrait"/>
+        <activity android:name=".allAct.CashFlowAct.CashFlowMain"
+                android:screenOrientation="portrait"
+                />
+
+        <!-- add ads id-->
+        <meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="@string/adsId"/>
     </application>
 
 </manifest>
