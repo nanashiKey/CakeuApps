@@ -20,16 +20,7 @@ class RegisterAct : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         allHelperMethod = AllHelperMethod(this@RegisterAct)
-
-        val windows = window
-        // clear FLAG_TRANSLUCENT_STATUS flag:
-        windows.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-
-        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        windows.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-
-        // finally change the color
-        windows.setStatusBarColor(ContextCompat.getColor(this@RegisterAct,  R.color.aoiBlue))
+        allHelperMethod.setWindowsBarBlue(this)
 
         btn_register.setOnClickListener {
             val email = et_email.text.toString()

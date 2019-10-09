@@ -21,6 +21,7 @@ class FirstMoney : AppCompatActivity() {
 
         prefsHelper = PrefsHelper(this@FirstMoney)
         allHelperMethod = AllHelperMethod(this@FirstMoney)
+        allHelperMethod.setWindowsBarBlue(this)
         btn_ok.setOnClickListener {
             val money = et_firstMoney.text.toString()
             if(money.isEmpty()){

@@ -1,5 +1,7 @@
 package com.ngopidev.project.cakeuapps.allAct
 
+import android.animation.Animator
+import android.animation.LayoutTransition
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,16 +32,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val windows = window
-        // clear FLAG_TRANSLUCENT_STATUS flag:
-        windows.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-
-        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        windows.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-
-        // finally change the color
-        windows.setStatusBarColor(ContextCompat.getColor(this@MainActivity,  R.color.aoiBlue))
-
+        allHelperMethod = AllHelperMethod(this@MainActivity)
+        allHelperMethod.setWindowsBarBlue(this)
 
         auth = FirebaseAuth.getInstance()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -47,12 +41,9 @@ class MainActivity : AppCompatActivity() {
             .requestEmail()
             .build()
         googleSignInAccount = GoogleSignIn.getClient(this@MainActivity,gso)
-        allHelperMethod = AllHelperMethod(this@MainActivity)
         prefsHelper = PrefsHelper(this@MainActivity)
         val getMoney = prefsHelper.getFirstInput()
-        tv_nominal.text = "your saving is :\n${getMoney}"
-
-
+        tv_nominal.text = "your current money is :\n${getMoney}"
 
         //cash flow function
         fr_cashFlow.setOnClickListener {

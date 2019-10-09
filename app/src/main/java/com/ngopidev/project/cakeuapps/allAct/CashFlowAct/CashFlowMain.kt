@@ -1,8 +1,11 @@
 package com.ngopidev.project.cakeuapps.allAct.CashFlowAct
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.ngopidev.project.cakeuapps.R
+import com.ngopidev.project.cakeuapps.appsHelper.AllHelperMethod
 import kotlinx.android.synthetic.main.cash_flow_act.*
 
 
@@ -11,9 +14,14 @@ import kotlinx.android.synthetic.main.cash_flow_act.*
  *   email : assidiq.irfan@gmail.com
  **/
 class CashFlowMain : AppCompatActivity() {
+    lateinit var allHelperMethod: AllHelperMethod
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cash_flow_act)
+
+        allHelperMethod = AllHelperMethod(this@CashFlowMain)
+        allHelperMethod.setWindowsBarBlue(this)
 
         btn_report.setOnClickListener {
             onBackPressed()
