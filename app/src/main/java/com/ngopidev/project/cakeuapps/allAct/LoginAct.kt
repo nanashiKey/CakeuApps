@@ -108,6 +108,7 @@ class LoginAct : AppCompatActivity() {
             }else{
                 prefsHelper.setIdUser(user.uid)
                 prefsHelper.setEmail(user.email!!)
+                e("CHECKERROR", user.email!!)
                 allHelperMethod.goTo(FirstMoney::class.java)
                 finish()
             }
