@@ -57,8 +57,7 @@ class LoginAct : AppCompatActivity() {
                 allHelperMethod.showShortToast("please fill all empty coloumn")
             }else{
                 auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
-                    startActivity(Intent(this@LoginAct, MainActivity::class.java))
-                    finish()
+                   updateUI(it.result!!.user)
                 }.addOnFailureListener {
                     allHelperMethod.showShortToast("email or password not match")
                     e("CHECKERRORS", it.message!!)

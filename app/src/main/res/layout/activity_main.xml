@@ -19,11 +19,14 @@
                 android:layout_height="30dp"
                 android:layout_gravity="end"
                 android:src="@drawable/ic_logout"
-                android:layout_margin="10dp"/>
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"/>
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="15dp"
                 android:text="@string/nominal"
                 android:id="@+id/tv_nominal"
                 android:textSize="25sp"
@@ -41,20 +44,22 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <LinearLayout
+                    android:id="@+id/foranim1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
                 <FrameLayout
                     android:id="@+id/fr_cashFlow"
-                    android:layout_margin="10dp"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_margin="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
                     android:background="@drawable/gradiens">
                     <ImageView
                         android:layout_gravity="center"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:src="@drawable/ic_money_flow"/>
                 </FrameLayout>
                 <TextView
@@ -70,17 +75,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:id="@+id/foranim2"
                     >
                 <FrameLayout
                         android:id="@+id/fr_seeAlldata"
-                        android:layout_margin="10dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_margin="7dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
                         android:background="@drawable/gradiens">
                     <ImageView
                             android:layout_gravity="center"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:src="@drawable/ic_accounting"/>
                 </FrameLayout>
                 <TextView
@@ -93,20 +100,22 @@
                         />
             </LinearLayout>
             <LinearLayout
+                    android:id="@+id/foranim3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
                 <FrameLayout
                         android:id="@+id/fr_cashHistory"
-                        android:layout_margin="10dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_margin="7dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
                         android:background="@drawable/gradiens">
                     <ImageView
                             android:layout_gravity="center"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:src="@drawable/ic_cash"/>
                 </FrameLayout>
                 <TextView
@@ -127,20 +136,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <LinearLayout
+                    android:id="@+id/foranim4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
                 <FrameLayout
                         android:id="@+id/fr_inviteQR"
-                        android:layout_margin="10dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_margin="7dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
                         android:background="@drawable/gradiens">
                     <ImageView
                             android:layout_gravity="center"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:src="@drawable/ic_qrcodescan"/>
                 </FrameLayout>
                 <TextView
@@ -153,15 +164,17 @@
                         />
             </LinearLayout>
             <LinearLayout
+                    android:id="@+id/foranim5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
                 <FrameLayout
                         android:id="@+id/fr_add"
-                        android:layout_margin="10dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_margin="7dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
                         android:background="@drawable/gradiens">
                     <ImageView
                             android:layout_gravity="center"

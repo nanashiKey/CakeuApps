@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.android.gms.ads.AdListener
@@ -35,6 +36,13 @@ class MainActivity : AppCompatActivity() {
         allHelperMethod = AllHelperMethod(this@MainActivity)
         allHelperMethod.setWindowsBarBlue(this)
 
+        val animtest = AnimationUtils.loadAnimation(this@MainActivity, R.anim.slideup)
+        foranim1.startAnimation(animtest)
+        foranim2.startAnimation(animtest)
+        foranim3.startAnimation(animtest)
+        foranim4.startAnimation(animtest)
+        foranim5.startAnimation(animtest)
+
         auth = FirebaseAuth.getInstance()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -44,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         prefsHelper = PrefsHelper(this@MainActivity)
         val getMoney = prefsHelper.getFirstInput()
         tv_nominal.text = "your current money is :\n${getMoney}"
+
 
         //cash flow function
         fr_cashFlow.setOnClickListener {
@@ -73,7 +82,6 @@ class MainActivity : AppCompatActivity() {
         //logout function
         logout.setOnClickListener {
             signOut()
-            allHelperMethod.goTo(LoginAct::class.java)
         }
 
         MobileAds.initialize(this)
@@ -116,5 +124,7 @@ class MainActivity : AppCompatActivity() {
     private fun signOut(){
         auth.signOut()
         googleSignInAccount.signOut()
+        allHelperMethod.goTo(LoginAct::class.java)
+        finish()
     }
 }
