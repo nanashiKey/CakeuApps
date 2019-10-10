@@ -101,11 +101,13 @@ class LoginAct : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            val isMoneyInputed = prefsHelper.getHasInput()
-            if(isMoneyInputed){
+            val ishadUID = prefsHelper.getIdUser()
+            if(ishadUID!!.equals(user.uid)){
                 startActivity(Intent(this@LoginAct, MainActivity::class.java))
                 finish()
             }else{
+                prefsHelper.setIdUser(user.uid)
+                prefsHelper.setEmail(user.email!!)
                 allHelperMethod.goTo(FirstMoney::class.java)
                 finish()
             }

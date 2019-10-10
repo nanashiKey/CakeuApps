@@ -49,4 +49,6 @@ class AllHelperMethod {
         // finally change the color
         windows.setStatusBarColor(ContextCompat.getColor(ctx,  R.color.aoiBlue))
     }
+
+
 }

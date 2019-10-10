@@ -21,8 +21,8 @@
     <string name="cash_control">Cash Control</string>
 
     <string-array name="selectType">
-        <item>spend money</item>
         <item>save money</item>
+        <item>spend money</item>
     </string-array>
 
     <!--  for ads  -->
@@ -30,4 +30,5 @@
     <string name="adsUnit" translatable="false">ca-app-pub-5695049111307874/6568789924</string>
     <string name="add_money">add money</string>
     <string name="report">REPORT</string>
+    <string name="add_descriptions">add descriptions</string>
 </resources>

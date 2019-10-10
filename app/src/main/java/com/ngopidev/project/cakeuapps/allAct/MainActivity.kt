@@ -16,10 +16,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.ngopidev.project.cakeuapps.R
 import com.ngopidev.project.cakeuapps.allAct.CashFlowAct.CashFlowMain
 import com.ngopidev.project.cakeuapps.appsHelper.AllHelperMethod
 import com.ngopidev.project.cakeuapps.appsHelper.PrefsHelper
+import com.ngopidev.project.cakeuapps.models.AllUsers
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var googleSignInAccount: GoogleSignInClient
     lateinit var allHelperMethod: AllHelperMethod
     lateinit var prefsHelper: PrefsHelper
+    lateinit var dbRef : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         allHelperMethod = AllHelperMethod(this@MainActivity)
         allHelperMethod.setWindowsBarBlue(this)
+        dbRef = FirebaseDatabase.getInstance().getReference("allusers")
 
         val animtest = AnimationUtils.loadAnimation(this@MainActivity, R.anim.slideup)
         foranim1.startAnimation(animtest)
@@ -50,8 +54,24 @@ class MainActivity : AppCompatActivity() {
             .build()
         googleSignInAccount = GoogleSignIn.getClient(this@MainActivity,gso)
         prefsHelper = PrefsHelper(this@MainActivity)
-        val getMoney = prefsHelper.getFirstInput()
-        tv_nominal.text = "your current money is :\n${getMoney}"
+        val uids = prefsHelper.getIdUser()
+
+        dbRef.child(uids!!).addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                val getData = p0.getValue(AllUsers::class.java)
+                if(getData != null){
+                    tv_nominal.text = "your current money is :\n${getData!!.moneyThisMonth}"
+                }else{
+                    allHelperMethod.showShortToast("there is an error")
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                allHelperMethod.showShortToast(p0.message)
+            }
+
+        })
+
 
 
         //cash flow function

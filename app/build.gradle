@@ -41,6 +41,10 @@ dependencies {
     //add google sign in method
     implementation 'com.google.firebase:firebase-auth:19.1.0'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    //add firebase
+    implementation 'com.google.firebase:firebase-database:19.1.0'
+
+    //add material
     implementation 'com.google.android.material:material:1.0.0'
 
     //try ads

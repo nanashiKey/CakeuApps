@@ -12,6 +12,8 @@ class PrefsHelper(var mContext: Context) {
     private val appsName = "CaKeuApps"
     private val firstInput = "FIRSTINPUT"
     private val hasInputCount = "HASINPUT"
+    private val idUser = "IDUSERS"
+    private val emailUser = "EMAILS"
     private var sharedSet : SharedPreferences
 
     init {
@@ -34,5 +36,23 @@ class PrefsHelper(var mContext: Context) {
     }
     fun getHasInput() : Boolean{
         return sharedSet.getBoolean(hasInputCount, false)
+    }
+
+    fun setIdUser(uid : String){
+        edit.putString(idUser, uid)
+        edit.apply()
+    }
+
+    fun getIdUser() : String?{
+        return sharedSet.getString(idUser, "")
+    }
+
+    fun setEmail(email : String){
+        edit.putString(emailUser, email)
+        edit.apply()
+    }
+
+    fun getEmail() : String?{
+        return sharedSet.getString(emailUser, "")
     }
 }
