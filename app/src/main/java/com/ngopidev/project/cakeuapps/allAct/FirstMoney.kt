@@ -22,15 +22,31 @@ class FirstMoney : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nominal)
-
-        dbRef = FirebaseDatabase.getInstance().reference
-
         prefsHelper = PrefsHelper(this@FirstMoney)
         allHelperMethod = AllHelperMethod(this@FirstMoney)
         allHelperMethod.setWindowsBarBlue(this)
+
+        dbRef = FirebaseDatabase.getInstance().reference
+        val uid = prefsHelper.getIdUser()
+        dbRef.child("alluser/${uid}")
+            .addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(p0: DataSnapshot) {
+                    for(howMoney in p0.children){
+                        if(howMoney.child("moneyThisMonth").value != 0){
+                            allHelperMethod.goTo(MainActivity::class.java)
+                            finish()
+                        }
+                    }
+                }
+                override fun onCancelled(p0: DatabaseError) {
+
+                }
+
+            })
+
         btn_ok.setOnClickListener {
             val money = et_firstMoney.text.toString()
-            val uid = prefsHelper.getIdUser()
+//            val uid = prefsHelper.getIdUser()
             val email = prefsHelper.getEmail()
             if(money.isNotEmpty()){
                 val allusers = AllUsers(uid!!, email!!, email, money)

@@ -18,6 +18,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.ngopidev.project.cakeuapps.R
 import com.ngopidev.project.cakeuapps.appsHelper.AllHelperMethod
 import com.ngopidev.project.cakeuapps.appsHelper.Const.Companion.RC_SIGN_IN
@@ -30,6 +32,7 @@ class LoginAct : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     lateinit var allHelperMethod: AllHelperMethod
     lateinit var prefsHelper: PrefsHelper
+    lateinit var dbRef : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +43,7 @@ class LoginAct : AppCompatActivity() {
         allHelperMethod.setWindowsBarBlue(this)
 
         auth = FirebaseAuth.getInstance()
-
+        dbRef = FirebaseDatabase.getInstance().reference
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -57,10 +60,15 @@ class LoginAct : AppCompatActivity() {
                 allHelperMethod.showShortToast("please fill all empty coloumn")
             }else{
                 auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
-                   updateUI(it.result!!.user)
+                    e("CHECKERRORS", "${it}")
+                    if(!it.isSuccessful){
+                        allHelperMethod.showShortToast("email or password not match")
+                    }else{
+                        updateUI(it.result!!.user)
+                    }
                 }.addOnFailureListener {
-                    allHelperMethod.showShortToast("email or password not match")
-                    e("CHECKERRORS", it.message!!)
+                    allHelperMethod.showLongToast("email or password not match")
+                    e("CHECKERRORz", it.message!!)
                 }
             }
 
@@ -113,7 +121,7 @@ class LoginAct : AppCompatActivity() {
                 finish()
             }
         } else {
-            Toast.makeText(this@LoginAct, "user unavailable", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@LoginAct, "user unavailable please register", Toast.LENGTH_SHORT).show()
         }
     }
 
