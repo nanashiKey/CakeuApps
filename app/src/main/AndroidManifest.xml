@@ -27,6 +27,9 @@
         <activity android:name=".allAct.CashFlowAct.CashFlowMain"
                 android:screenOrientation="portrait"
                 />
+        <activity android:name=".allAct.Groups"
+            android:screenOrientation="portrait"
+                />
 
         <!-- add ads id-->
         <meta-data

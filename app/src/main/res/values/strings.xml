@@ -14,7 +14,7 @@
     <string name="email">email</string>
     <string name="nominal">nominal</string>
     <string name="input_your_first_money">input your first money</string>
-    <string name="add_friends">Add Friends</string>
+    <string name="add_friends">Create Groups</string>
     <string name="scan_qr">Scan QR</string>
     <string name="flow_history">Cash History</string>
     <string name="cash_flow">Cash Flow</string>
@@ -31,4 +31,7 @@
     <string name="add_money">add money</string>
     <string name="report">REPORT</string>
     <string name="add_descriptions">add descriptions</string>
+    <string name="groups_name">groups name</string>
+    <string name="create_unique_code">create unique code</string>
+    <string name="create">CREATE</string>
 </resources>

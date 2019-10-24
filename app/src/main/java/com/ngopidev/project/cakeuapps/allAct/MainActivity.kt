@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
         //add data flow function
         fr_add.setOnClickListener {
-            allHelperMethod.underConstructionToast()
+            allHelperMethod.goTo(Groups::class.java)
         }
 
         //logout function
