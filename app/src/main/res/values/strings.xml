@@ -26,8 +26,11 @@
     </string-array>
 
     <!--  for ads  -->
-    <string name="adsId" translatable="false">ca-app-pub-5695049111307874~5803816241</string>
-    <string name="adsUnit" translatable="false">ca-app-pub-5695049111307874/6568789924</string>
+<!--    <string name="adsId" translatable="false">ca-app-pub-5695049111307874~5803816241</string>-->
+    <string name="adsId" translatable="false">ca-app-pub-1054022283683770~1124015184</string>
+<!--    <string name="adsUnit" translatable="false">ca-app-pub-5695049111307874/6568789924</string>-->
+    <string name="adsUnit" translatable="false">ca-app-pub-1054022283683770/3737929609</string>
+    <string name="testAds">ca-app-pub-3940256099942544/6300978111</string>
     <string name="add_money">add money</string>
     <string name="report">REPORT</string>
     <string name="add_descriptions">add descriptions</string>

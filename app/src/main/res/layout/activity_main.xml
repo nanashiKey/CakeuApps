@@ -7,7 +7,8 @@
         android:layout_height="match_parent"
         tools:context=".allAct.MainActivity"
         android:background="@drawable/gradcolor"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        xmlns:ads="http://schemas.android.com/apk/lib/com.inmobi.ads">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -192,13 +193,22 @@
                         />
             </LinearLayout>
         </LinearLayout>
-            <com.google.android.gms.ads.AdView
-                    xmlns:ads="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/adView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    ads:adSize="SMART_BANNER"
-                    ads:adUnitId="@string/adsUnit"/>
+<!--            <com.google.android.gms.ads.AdView-->
+<!--                    xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:id="@+id/adView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    ads:adSize="SMART_BANNER"-->
+<!--                    ads:adUnitId="@string/testAds"/>-->
+        <com.inmobi.ads.InMobiBanner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/banner"
+                android:layout_marginTop="20dp"
+                ads:placementId="1584261829984"
+                ads:refreshInterval="60"
+                adSize="15"
+                />
     </LinearLayout>
 </ScrollView>

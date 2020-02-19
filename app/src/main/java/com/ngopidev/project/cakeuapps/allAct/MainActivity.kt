@@ -5,8 +5,10 @@ import android.animation.LayoutTransition
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log.e
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.android.gms.ads.AdListener
@@ -17,6 +19,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.inmobi.ads.InMobiAdRequestStatus
+import com.inmobi.ads.InMobiBanner
+import com.inmobi.ads.listeners.BannerAdEventListener
 import com.ngopidev.project.cakeuapps.R
 import com.ngopidev.project.cakeuapps.allAct.CashFlowAct.CashFlowMain
 import com.ngopidev.project.cakeuapps.appsHelper.AllHelperMethod
@@ -60,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 val getData = p0.getValue(AllUsers::class.java)
                 if(getData != null){
-                    tv_nominal.text = "your current money is :\n${getData!!.moneyThisMonth}"
+                    tv_nominal.text = "your current money is :\n${getData?.moneyThisMonth}"
                 }else{
                     allHelperMethod.showShortToast("there is an error")
                 }
@@ -104,41 +109,35 @@ class MainActivity : AppCompatActivity() {
             signOut()
         }
 
-        MobileAds.initialize(this)
-        val adReq = AdRequest.Builder().build()
-        adView.loadAd(adReq)
+//        MobileAds.initialize(this)
+//        val adReq = AdRequest.Builder().build()
+//        adView.loadAd(adReq)
+//
+//        adView.adListener = object : AdListener() {
+//            override fun onAdFailedToLoad(p0: Int) {
+//                super.onAdFailedToLoad(p0)
+//                allHelperMethod.showShortToast("ads failed to load")
+//            }
+//        }
 
-        adView.adListener = object : AdListener(){
-            override fun onAdImpression() {
-                super.onAdImpression()
+        //ads inmobi test
+        banner.load()
+        banner.setListener(object : BannerAdEventListener(){
+            override fun onAdLoadFailed(p0: InMobiBanner?, p1: InMobiAdRequestStatus?) {
+                super.onAdLoadFailed(p0, p1)
+                e("Ads", "error showing ads")
+
+            }
+            override fun onRequestPayloadCreationFailed(p0: InMobiAdRequestStatus?) {
+                super.onRequestPayloadCreationFailed(p0)
+                e("Ads", "error showing ads")
             }
 
-            override fun onAdLeftApplication() {
-                super.onAdLeftApplication()
+            override fun onAdLoadSucceeded(p0: InMobiBanner?) {
+                super.onAdLoadSucceeded(p0)
+                e("Ads", "Load ads Success")
             }
-
-            override fun onAdClicked() {
-                super.onAdClicked()
-            }
-
-            override fun onAdFailedToLoad(p0: Int) {
-                super.onAdFailedToLoad(p0)
-                allHelperMethod.showShortToast("Ads Failed to Load")
-            }
-
-            override fun onAdClosed() {
-                super.onAdClosed()
-            }
-
-            override fun onAdOpened() {
-                super.onAdOpened()
-            }
-
-            override fun onAdLoaded() {
-                super.onAdLoaded()
-            }
-
-        }
+        })
     }
 
     private fun signOut(){
